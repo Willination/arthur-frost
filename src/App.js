@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Timeline from './components/Timeline';
+import Intro from './components/Intro';
 
 function App() {
+  const [jsonData, setJsonData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://arthurfrost.qflo.co.za/php/getTimeline.php');
+        setJsonData(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="container mt-5">
+        {jsonData && (
+            <div>
+              <Intro introText={jsonData.Body[0].About} />
+              <Timeline timelineData={jsonData.Timeline} />
+            </div>
+        )}
+      </div>
   );
 }
 

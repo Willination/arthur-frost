@@ -1,4 +1,4 @@
-# React Timeline Application
+# Arthur Frost Application
 
 This is a single-page React application that displays a timeline with content retrieved via an Ajax call to [https://arthurfrost.qflo.co.za/php/getTimeline.php](https://arthurfrost.qflo.co.za/php/getTimeline.php).
 
