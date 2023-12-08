@@ -54,7 +54,7 @@ The application uses React to create a single page that displays the contents of
 
 ## Screenshots
 
-![Screenshot](/path/to/screenshot.png)
+![Screenshot](public/arthurfrost.PNG)
 
 ## Contributing
 
