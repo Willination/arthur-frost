@@ -11,8 +11,14 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://arthurfrost.qflo.co.za/php/getTimeline.php');
-        setJsonData(response.data);
+        axios.get('https://arthurfrost.qflo.co.za/php/getTimeline.php')
+            .then((response) => {
+              console.log('Axios Response:', response);
+              setJsonData(response.data);
+            })
+            .catch((error) => {
+              console.error('Error fetching timeline data:', error);
+            });
       } catch (error) {
         console.error('Error fetching data:', error);
       }
